@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: Shinobi is a decentralized protocol for automated token exchange on Ubiq.
-repository: https://github.com/octanolabs/shinobi-subgraph
+repository: https://github.com/expswap/eggswap-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
@@ -8,9 +8,9 @@ dataSources:
     name: Factory
     network: mainnet
     source:
-      address: '0xbA831e62ac14d8500cEF0367b14F383d7b1B1b0A'
+      address: '0xaf69b94F4A1BBb09aD54DAaFca4629D915BD84E5'
       abi: Factory
-      startBlock: 1315743
+      startBlock: 4000000
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -35,8 +35,8 @@ dataSources:
     name: Oracle
     network: mainnet
     source:
-      address: '0xaefF2F7644f1C615aDb309513c4CB564F44Bb68F'
-      startBlock: 1322544
+      address: '0xc3711801626c2fb96bDbA3B31FF644Db531f6040'
+      startBlock: 4531836
       abi: Oracle
     mapping:
       kind: ethereum/events

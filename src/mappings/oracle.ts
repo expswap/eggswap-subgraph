@@ -3,10 +3,11 @@ import { PriceStore } from '../types/schema'
 import { Oracle } from '../types/Oracle/Oracle'
 import { Address, EthereumBlock, json, JSONValueKind } from '@graphprotocol/graph-ts'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts/index'
-import { exponentToBigDecimal } from './helpers'
+import { BI_18, exponentToBigDecimal } from './helpers'
 import { ZERO_BD } from './helpers'
 
-const ORACLE_ADDRESS = '0xaefF2F7644f1C615aDb309513c4CB564F44Bb68F' // created block 1322544
+const ORACLE_ADDRESS = '0xc3711801626c2fb96bDbA3B31FF644Db531f6040' // created block 4531836
+
 
 export function getEthPriceInUSD(): BigDecimal {
   // fetch price from market oracle
@@ -26,13 +27,16 @@ export function priceUpdate(block: EthereumBlock): void {
   } else {
     let contract = Oracle.bind(Address.fromString(ORACLE_ADDRESS))
     if (contract == null) {
-      oracle.usd =  ZERO_BD
+      //GET data from historical data api, using the block.timestamp
+      //make sure to convert the return
+      oracle.usd =  BigDecimal.fromString('1000000000000000000')
     } else {
       let data: BigInt = contract.getPriceUsd()
       if (data == null) {
-        oracle.usd =  ZERO_BD
+        oracle.usd = BigDecimal.fromString('1000000000000000000')
       } else {
-        oracle.usd = data.toBigDecimal().div(exponentToBigDecimal(BigInt.fromI32(6)))
+        //make sure to convert from wei fromI32(18)
+        oracle.usd = data.toBigDecimal().div(exponentToBigDecimal(BI_18))
       }
     }
   }
