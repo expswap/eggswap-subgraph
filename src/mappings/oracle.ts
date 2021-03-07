@@ -23,7 +23,7 @@ export function priceUpdate(block: EthereumBlock): void {
   let oracle = PriceStore.load(ORACLE_ADDRESS)
   if (oracle == null) {
     oracle = new PriceStore(ORACLE_ADDRESS)
-    oracle.usd =  ZERO_BD
+    oracle.usd =  BigDecimal.fromString('1000000000000000000')
   } else {
     let contract = Oracle.bind(Address.fromString(ORACLE_ADDRESS))
     if (contract == null) {

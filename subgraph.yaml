@@ -32,7 +32,7 @@ dataSources:
         - event: PairCreated(indexed address,indexed address,address,uint256)
           handler: handleNewPair
   - kind: ethereum/contract
-    name: Oracle
+    name: PriceOracle
     network: mainnet
     source:
       address: '0xc3711801626c2fb96bDbA3B31FF644Db531f6040'
