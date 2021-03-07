@@ -20,20 +20,21 @@ export function getEthPriceInUSD(): BigDecimal {
 }
 
 export function priceUpdate(block: EthereumBlock): void {
+
   let oracle = PriceStore.load(ORACLE_ADDRESS)
   if (oracle == null) {
     oracle = new PriceStore(ORACLE_ADDRESS)
-    oracle.usd =  BigDecimal.fromString('1000000000000000000')
+    oracle.usd =  ZERO_BD
   } else {
     let contract = Oracle.bind(Address.fromString(ORACLE_ADDRESS))
     if (contract == null) {
       //GET data from historical data api, using the block.timestamp
       //make sure to convert the return
-      oracle.usd =  BigDecimal.fromString('1000000000000000000')
+      oracle.usd =  ZERO_BD
     } else {
       let data: BigInt = contract.getPriceUsd()
       if (data == null) {
-        oracle.usd = BigDecimal.fromString('1000000000000000000')
+        oracle.usd = BigDecimal.fromString('1000000000000000000').div(exponentToBigDecimal(BI_18))
       } else {
         //make sure to convert from wei fromI32(18)
         oracle.usd = data.toBigDecimal().div(exponentToBigDecimal(BI_18))
