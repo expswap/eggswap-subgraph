@@ -4,14 +4,15 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 import { getEthPriceInUSD } from './oracle'
 
-const WUBQ_ADDRESS = '0x1fa6a37c64804c0d797ba6bc1955e50068fbf362'
+const WETH_ADDRESS = '0x331631B4bb93b9B8962faE15860BD538a389395A'
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
-  WUBQ_ADDRESS, // WUBQ
-  '0xcf3222b7fda7a7563b9e1e6c966bead04ac23c36', // ESCH
-  '0x500684ce0d4f04abedff3e54fcf8acc5e6cfc4bd', // GEO
-  '0x20e3dd746ddf519b23ffbbb6da7a5d33ea6349d6' // SPHR
+  WETH_ADDRESS, // WEXP
+  '0xd1365a5Af713cde10C6ac3fB9EDBB2bBbd4B2Ba2', // EGG
+  '0x9D2761A714b5b2EfA325a8a3eee21BE32AACeB4A', // LOVE
+  '0x3b4cfcc4532eec161860cb6544f49947544d940d', // LAB
+  '0x0D14F385647E66283E8E5D9c567296751Ac7ee7D' // WAGMI
 ]
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
@@ -25,7 +26,7 @@ let MINIMUM_LIQUIDITY_THRESHOLD_ETH = BigDecimal.fromString('2')
  * @todo update to be derived ETH (add stablecoin estimates)
  **/
 export function findEthPerToken(token: Token): BigDecimal {
-  if (token.id == WUBQ_ADDRESS) {
+  if (token.id == WETH_ADDRESS) {
     return ONE_BD
   }
   // loop through whitelist and check if paired with any
