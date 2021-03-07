@@ -49,8 +49,8 @@ dataSources:
         - name: Oracle
           file: ./abis/oracle.json
       eventHandlers:
-        - event: PriceUpdate(bytes32,uin256)
-        - handler: priceUpdate
+        - event: PriceUpdate(bytes32,uint256)
+          handler: priceUpdate
 templates:
   - kind: ethereum/contract
     name: Pair
