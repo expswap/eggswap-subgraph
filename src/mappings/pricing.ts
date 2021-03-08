@@ -4,7 +4,7 @@ import { BigDecimal, Address, BigInt } from '@graphprotocol/graph-ts/index'
 import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 import { getEthPriceInUSD } from './oracle'
 
-const WETH_ADDRESS = '0x331631B4bb93b9B8962faE15860BD538a389395A'
+const WETH_ADDRESS = '0x331631b4bb93b9b8962fae15860bd538a389395a'
 
 // token where amounts should contribute to tracked volume and liquidity
 let WHITELIST: string[] = [
