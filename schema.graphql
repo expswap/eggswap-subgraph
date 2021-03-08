@@ -101,7 +101,6 @@ type PriceStore @entity {
 
   # mirrored from contract
   getPriceUsd: BigInt
-  getTimestamp: BigInt
   getPriceBtc: BigInt
 
   #calculated

@@ -39,9 +39,9 @@
 		"inputs": [
 			{
 				"indexed": false,
-				"internalType": "bytes32",
+				"internalType": "bytes4",
 				"name": "symbol",
-				"type": "bytes32"
+				"type": "bytes4"
 			},
 			{
 				"indexed": false,
