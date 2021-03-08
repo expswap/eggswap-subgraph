@@ -1,6 +1,6 @@
 /* eslint-disable prefer-const */
 import { PriceStore } from '../types/schema'
-import { Oracle } from '../types/Oracle/Oracle'
+import { Oracle, PriceUpdate } from '../types/Oracle/Oracle'
 import { Address, EthereumBlock, json, JSONValueKind } from '@graphprotocol/graph-ts'
 import { BigDecimal, BigInt } from '@graphprotocol/graph-ts/index'
 import { BI_18, exponentToBigDecimal, convertEthToDecimal } from './helpers'

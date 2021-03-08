@@ -148,6 +148,13 @@ type Transaction @entity {
   swaps: [Swap]!
 }
 
+type PriceUpdate @entity {
+  id: ID!
+
+  symbol: Bytes
+  price: BigInt
+}
+
 type Mint @entity {
   # transaction hash + "-" + index in mints Transaction array
   id: ID!
