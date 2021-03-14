@@ -16,8 +16,7 @@ export function getEthPriceInUSD(): BigDecimal {
     oracle = new PriceStore(ORACLE_ADDRESS)
     oracle.usd = BigDecimal.fromString('100000000000000000').div(exponentToBigDecimal(BI_18)) // should be about 10 cents
     oracle.save()
-  } 
-	log.info('GET ETH PRICE WAS CALLED : PRICE IS ===> {} <====', [oracle.usd.toString()])
+  }
   return oracle.usd;
 }
 
@@ -28,7 +27,7 @@ export function priceUpdate(event: PriceUpdate): void {
   if( oracle === null ){
     log.info('The oracle is null so we are making a new one and setting the price to 10 cents', [])
     oracle = new PriceStore(ORACLE_ADDRESS)
-    oracle.usd = convertEthToDecimal(BigInt.fromI32(17)) // should be about 10 cents
+    oracle.usd = BigDecimal.fromString('100000000000000000').div(exponentToBigDecimal(BI_18)) // should be about 10 cents
   }
 
   oracle.save()
